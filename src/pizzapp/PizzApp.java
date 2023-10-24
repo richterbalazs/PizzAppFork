@@ -290,7 +290,7 @@ public class PizzApp extends javax.swing.JFrame {
     }//GEN-LAST:event_rdbMeret32ItemStateChanged
 
     private void szamolasEsKiiras() {
-    vegsoAr = alapAr * meretSzorzo + extrak;
+    vegsoAr = alapAr * meretSzorzo;
     vegsoAr *= db; //vegsoAr = vegsoAr * db
     lblAr.setText(vegsoAr + "");
     }
