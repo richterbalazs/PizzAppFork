@@ -5,6 +5,7 @@ public class PizzApp extends javax.swing.JFrame {
     double meretSzorzo = 1; //32 cm
     int alapAr = -1; //-1 jelentése:  nincs ára a pizzának;
     int extrak, db;
+    double vegsoAr = alapAr * meretSzorzo + extrak;
     
 
     public PizzApp() {
@@ -21,9 +22,7 @@ public class PizzApp extends javax.swing.JFrame {
         int extra3 = 0;
         extrak = extra1 + extra2 + extra3;
         
-        double vegsoAr = alapAr * meretSzorzo + extrak;
-        vegsoAr *= db; //vegsoAr = vegsoAr * db
-        lblAr.setText(vegsoAr + "");
+        szamolasEsKiiras();
     }
 
     @SuppressWarnings("unchecked")
@@ -272,25 +271,30 @@ public class PizzApp extends javax.swing.JFrame {
         int extra1 = 0;
         int extra2 = 0;
         int extra3 = 0;
-        int extrak = extra1 + extra2 + extra3;
+        extrak = extra1 + extra2 + extra3;
         
-        double vegsoAr = alapAr * meretSzorzo + extrak;
-        vegsoAr *= db; //vegsoAr = vegsoAr * db
-        lblAr.setText(vegsoAr + "");
+        szamolasEsKiiras();
     }//GEN-LAST:event_cmdValaszthatoPizzakActionPerformed
 
     private void rdbMeret25ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdbMeret25ItemStateChanged
          meretSzorzo = .75;
          
-        double vegsoAr = alapAr * meretSzorzo + extrak;
-        vegsoAr *= db; //vegsoAr = vegsoAr * db
-        lblAr.setText(vegsoAr + "");
+        szamolasEsKiiras();
     }//GEN-LAST:event_rdbMeret25ItemStateChanged
+
 
     private void rdbMeret32ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdbMeret32ItemStateChanged
          meretSzorzo = 1;
+         
+        szamolasEsKiiras();
     }//GEN-LAST:event_rdbMeret32ItemStateChanged
 
+    private void szamolasEsKiiras() {
+    vegsoAr = alapAr * meretSzorzo + extrak;
+    vegsoAr *= db; //vegsoAr = vegsoAr * db
+    lblAr.setText(vegsoAr + "");
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
