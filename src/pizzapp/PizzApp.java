@@ -206,6 +206,11 @@ public class PizzApp extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txaOsszesito);
 
         btnRendel.setText("Megrendelem");
+        btnRendel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRendelActionPerformed(evt);
+            }
+        });
 
         lblOsszesito.setText("Összesítő");
 
@@ -352,6 +357,10 @@ public class PizzApp extends javax.swing.JFrame {
             szamolasEsKiiras();
         }
     }//GEN-LAST:event_chbAnanaszItemStateChanged
+
+    private void btnRendelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRendelActionPerformed
+        JOptionPane.showMessageDialog(rootPane, "Sikeres megrendelés! A rendelés végső összege: "+vegsoAr+" Ft.");
+    }//GEN-LAST:event_btnRendelActionPerformed
 
     private void szamolasEsKiiras() {
     vegsoAr = alapAr * meretSzorzo + extrak;
