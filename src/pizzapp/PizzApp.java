@@ -1,12 +1,13 @@
 package pizzapp;
 
 import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 
 public class PizzApp extends javax.swing.JFrame {
     
     double meretSzorzo = 1; //32 cm
     int alapAr = -1; //-1 jelentése:  nincs ára a pizzának;
-    int extrak, db;
+    int extrak, extra1, extra2, extra3, db;
     double vegsoAr = alapAr * meretSzorzo + extrak;
     
 
@@ -19,9 +20,9 @@ public class PizzApp extends javax.swing.JFrame {
         
         db = 1;
         
-        int extra1 = 200;
-        int extra2 = 200;
-        int extra3 = 200;
+        extra1 = 200;
+        extra2 = 200;
+        extra3 = 200;
         extrak = extra1 + extra2 + extra3;
         
         szamolasEsKiiras();
@@ -130,13 +131,13 @@ public class PizzApp extends javax.swing.JFrame {
             pnlFizetendoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFizetendoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlFizetendoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlFizetendoLayout.createSequentialGroup()
+                .addGroup(pnlFizetendoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlFizetendoLayout.createSequentialGroup()
                         .addComponent(lblfizDb, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(numDb, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlFizetendoLayout.createSequentialGroup()
-                        .addComponent(lblAr, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlFizetendoLayout.createSequentialGroup()
+                        .addComponent(lblAr, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblFizFt, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(23, 23, 23))
@@ -157,10 +158,25 @@ public class PizzApp extends javax.swing.JFrame {
         pnlExtrak.setBorder(javax.swing.BorderFactory.createTitledBorder("Extrák"));
 
         chbSajt.setText("sajt");
+        chbSajt.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chbSajtItemStateChanged(evt);
+            }
+        });
 
         chbHagyma.setText("hagyma");
+        chbHagyma.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chbHagymaItemStateChanged(evt);
+            }
+        });
 
         chbAnanasz.setText("ananász");
+        chbAnanasz.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chbAnanaszItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlExtrakLayout = new javax.swing.GroupLayout(pnlExtrak);
         pnlExtrak.setLayout(pnlExtrakLayout);
@@ -191,7 +207,7 @@ public class PizzApp extends javax.swing.JFrame {
 
         btnRendel.setText("Megrendelem");
 
-        lblOsszesito.setText("Összestő:");
+        lblOsszesito.setText("Összesítő");
 
         lblKep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kepek/pizza.png"))); // NOI18N
 
@@ -275,9 +291,9 @@ public class PizzApp extends javax.swing.JFrame {
         
         db = 1;
         
-        int extra1 = 0;
-        int extra2 = 0;
-        int extra3 = 0;
+        extra1 = 0;
+        extra2 = 0;
+        extra3 = 0;
         extrak = extra1 + extra2 + extra3;
         
         szamolasEsKiiras();
@@ -300,6 +316,42 @@ public class PizzApp extends javax.swing.JFrame {
         db = (int) numDb.getValue();
         szamolasEsKiiras();
     }//GEN-LAST:event_numDbStateChanged
+
+    private void chbSajtItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbSajtItemStateChanged
+        if (chbSajt.isSelected()){
+            extra1 += 250;
+            extrak = extra1 + extra2 + extra3;
+            szamolasEsKiiras();
+        }else{
+            extra1 += -250;
+            extrak = extra1 + extra2 + extra3;
+            szamolasEsKiiras();
+        }
+    }//GEN-LAST:event_chbSajtItemStateChanged
+
+    private void chbHagymaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbHagymaItemStateChanged
+        if (chbHagyma.isSelected()){
+            extra2 += 250;
+            extrak = extra1 + extra2 + extra3;
+            szamolasEsKiiras();
+        }else{
+            extra2 += -250;
+            extrak = extra1 + extra2 + extra3;
+            szamolasEsKiiras();
+        }
+    }//GEN-LAST:event_chbHagymaItemStateChanged
+
+    private void chbAnanaszItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbAnanaszItemStateChanged
+            if (chbAnanasz.isSelected()){
+            extra3 += 250;
+            extrak = extra1 + extra2 + extra3;
+            szamolasEsKiiras();
+        }else{
+            extra3 += -250;
+            extrak = extra1 + extra2 + extra3;
+            szamolasEsKiiras();
+        }
+    }//GEN-LAST:event_chbAnanaszItemStateChanged
 
     private void szamolasEsKiiras() {
     vegsoAr = alapAr * meretSzorzo + extrak;
