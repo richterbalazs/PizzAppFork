@@ -9,6 +9,7 @@ public class PizzApp extends javax.swing.JFrame {
     int alapAr = -1; //-1 jelentése:  nincs ára a pizzának;
     int extrak, extra1, extra2, extra3, db;
     double vegsoAr = alapAr * meretSzorzo + extrak;
+    String osszegzo = "";
     
 
     public PizzApp() {
@@ -359,7 +360,31 @@ public class PizzApp extends javax.swing.JFrame {
     }//GEN-LAST:event_chbAnanaszItemStateChanged
 
     private void btnRendelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRendelActionPerformed
-        JOptionPane.showMessageDialog(rootPane, "Sikeres megrendelés! A rendelés végső összege: "+vegsoAr+" Ft.");
+        JOptionPane.showMessageDialog(rootPane, "Sikeres megrendelés! A rendelés részletei az összesítőben találhatóak!");
+        
+        osszegzo += cmdValaszthatoPizzak.getSelectedItem();
+
+    if(rdbMeret25.isSelected()){
+    osszegzo += "\n Pizza mérete: 25cm\n";}
+    if(rdbMeret32.isSelected()){
+    osszegzo += "\nPizza mérete: 32cm\n";}
+    osszegzo += numDb.getValue();
+    osszegzo += "db:";
+    if(chbSajt.isSelected()){
+                   osszegzo += "\nExtra feltét: Sajt ";
+
+     }
+     if(chbAnanasz.isSelected()){
+                   osszegzo += "\nExtra feltét: Ananász ";
+
+     }
+     if(chbHagyma.isSelected()){
+                   osszegzo += "\nExtra feltét: Hagyma ";
+
+     }
+     osszegzo += lblAr.getText();
+     osszegzo += "Ft";
+      kiiras();
     }//GEN-LAST:event_btnRendelActionPerformed
 
     private void szamolasEsKiiras() {
@@ -422,4 +447,8 @@ public class PizzApp extends javax.swing.JFrame {
     private javax.swing.JRadioButton rdbMeret32;
     private javax.swing.JTextArea txaOsszesito;
     // End of variables declaration//GEN-END:variables
+
+    private void kiiras() {
+       txaOsszesito.setText(osszegzo);
+    }
 }
