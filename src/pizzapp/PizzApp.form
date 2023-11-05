@@ -348,7 +348,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblOsszesito">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#xd6;sszes&#xed;t&#x151;"/>
+        <Property name="text" type="java.lang.String" value="&#xd6;sszes&#xed;t&#xe9;s"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblKep">

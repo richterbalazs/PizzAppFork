@@ -213,7 +213,7 @@ public class PizzApp extends javax.swing.JFrame {
             }
         });
 
-        lblOsszesito.setText("Összesítő");
+        lblOsszesito.setText("Összesítés");
 
         lblKep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kepek/pizza.png"))); // NOI18N
 
